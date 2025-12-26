@@ -1,0 +1,6 @@
+{
+  "name": "codex-review",
+  "version": "1.0.0",
+  "description": "Codex-powered code review skill for Claude Code",
+  "skills": "./skills/"
+}

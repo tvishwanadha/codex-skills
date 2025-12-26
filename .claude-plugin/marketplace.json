@@ -1,0 +1,14 @@
+{
+  "name": "codex-skills",
+  "owner": {
+    "name": "Teja Vishwanadha",
+    "email": "496868+tvishwanadha@users.noreply.github.com"
+  },
+  "plugins": [
+    {
+      "name": "codex-review",
+      "source": "./plugins/codex-review",
+      "description": "Use Codex MCP for plan review, completion verification, and code review."
+    }
+  ]
+}
