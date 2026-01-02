@@ -1,10 +1,12 @@
 # Codex Review Skill
 
-A Claude Code skill that integrates OpenAI Codex as an MCP server for plan review, code review, and completion verification.
+A skill that integrates OpenAI Codex as an MCP server for plan review, code review, and completion verification.
+
+This repository is a [Claude Code plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces) containing an [agentskills.io](https://agentskills.io) compatible skill. The installation instructions below are for Claude Code, but the skill can be adapted for other compatible agents.
 
 ## What It Does
 
-The `codex-review` skill teaches Claude to:
+The `codex-review` skill teaches an agent to:
 - **Review plans** before implementation
 - **Verify completion** after implementation, especially after context compactions
 - **Review code** after writing significant changes
@@ -15,35 +17,20 @@ The `codex-review` skill teaches Claude to:
 - [Claude Code](https://claude.com/claude-code) installed
 - [Codex CLI](https://github.com/openai/codex) installed
 
-## Installation
+## Installation (Claude Code)
 
-### 1. Add Codex as an MCP Server
+### 1. Install the Plugin
 
-```bash
-claude mcp add --scope user --transport stdio codex -- codex mcp-server
-```
-
-Verify it's connected:
-
-```bash
-claude mcp list
-```
-
-You should see:
-```
-codex: codex mcp-server - ✓ Connected
-```
-
-### 2. Install the Skill
-
-Add this repository as a marketplace and install the skill:
+Add this repository as a marketplace and install the plugin:
 
 ```
 /plugin marketplace add tvishwanadha/codex-skills
 /plugin install codex-review
 ```
 
-### 3. Configure Claude to Use the Skill (Recommended)
+The plugin automatically configures the Codex MCP server.
+
+### 2. Configure Claude to Use the Skill (Recommended)
 
 Add the following to `~/.claude/CLAUDE.md`:
 
@@ -60,17 +47,37 @@ Add the following to `~/.claude/CLAUDE.md`:
 Skip only for: simple docs, single-file changes, trivial fixes.
 ```
 
-### 4. Auto-approve Codex Tools (Optional)
+### 3. Auto-approve Codex Tools
 
-To avoid permission prompts for Codex tools, add to `~/.claude/settings.json`:
+Add to `~/.claude/settings.json`:
 
 ```json
 {
   "permissions": {
-    "allow": ["mcp__codex__*"]
+    "allow": ["mcp__plugin_codex-review_codex__*"]
   }
 }
 ```
+
+> **Note:** The skill's SKILL.md includes an `allowed-tools` field per the [agentskills.io specification](https://agentskills.io/specification.md), but this is not yet supported by Claude Code. The manual configuration above is required.
+
+## How It Works
+
+The plugin bundles an MCP server configuration that runs `codex mcp-server`. When installed, Claude Code namespaces the server as `plugin:codex-review:codex`, which determines the tool names:
+
+- `mcp__plugin_codex-review_codex__codex` - Start a session
+- `mcp__plugin_codex-review_codex__codex-reply` - Continue a session
+
+The skill references these specific tool names. This coupling is Claude Code-specific; adapting for other agents would require updating the tool references in SKILL.md.
+
+## Compatibility
+
+| Layer | Format | Reference |
+|-------|--------|-----------|
+| Distribution | Claude Code plugin marketplace | [plugin-marketplaces](https://code.claude.com/docs/en/plugin-marketplaces) |
+| Skill | agentskills.io specification | [specification.md](https://agentskills.io/specification.md) |
+
+The SKILL.md frontmatter includes `allowed-tools`, `license`, and `compatibility` fields per the agentskills.io spec. These are forward-compatible but not yet implemented by Claude Code.
 
 ## Skill Details
 

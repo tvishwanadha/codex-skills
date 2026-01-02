@@ -4,6 +4,9 @@
     "name": "Teja Vishwanadha",
     "email": "496868+tvishwanadha@users.noreply.github.com"
   },
+  "metadata": {
+    "description": "Skills that integrate OpenAI Codex with Claude Code for enhanced code review workflows"
+  },
   "plugins": [
     {
       "name": "codex-review",
