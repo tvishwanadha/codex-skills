@@ -59,8 +59,6 @@ Add to `~/.claude/settings.json`:
 }
 ```
 
-> **Note:** The skill's SKILL.md includes an `allowed-tools` field per the [agentskills.io specification](https://agentskills.io/specification.md), but this is not yet supported by Claude Code. The manual configuration above is required.
-
 ## How It Works
 
 The plugin bundles an MCP server configuration that runs `codex mcp-server`. When installed, Claude Code namespaces the server as `plugin:codex-review:codex`, which determines the tool names:
@@ -68,7 +66,7 @@ The plugin bundles an MCP server configuration that runs `codex mcp-server`. Whe
 - `mcp__plugin_codex-review_codex__codex` - Start a session
 - `mcp__plugin_codex-review_codex__codex-reply` - Continue a session
 
-The skill references these specific tool names. This coupling is Claude Code-specific; adapting for other agents would require updating the tool references in SKILL.md.
+The skill uses semantic tool references (e.g., "Codex MCP server's `codex` tool") rather than Claude Code-specific names, making SKILL.md portable across agents that support the [agentskills.io](https://agentskills.io) format.
 
 ## Compatibility
 
@@ -77,7 +75,7 @@ The skill references these specific tool names. This coupling is Claude Code-spe
 | Distribution | Claude Code plugin marketplace | [plugin-marketplaces](https://code.claude.com/docs/en/plugin-marketplaces) |
 | Skill | agentskills.io specification | [specification.md](https://agentskills.io/specification.md) |
 
-The SKILL.md frontmatter includes `allowed-tools`, `license`, and `compatibility` fields per the agentskills.io spec. These are forward-compatible but not yet implemented by Claude Code.
+The SKILL.md frontmatter includes `license` and `compatibility` fields per the agentskills.io spec.
 
 ## Skill Details
 

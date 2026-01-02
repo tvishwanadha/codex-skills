@@ -2,8 +2,7 @@
 name: codex-review
 description: Use Codex MCP for plan review, completion verification, and code review on multi-file changes or after context compactions.
 license: MIT
-compatibility: Requires Codex CLI installed and configured as MCP server
-allowed-tools: mcp__plugin_codex-review_codex__codex mcp__plugin_codex-review_codex__codex-reply
+compatibility: Requires Codex CLI with MCP server (`codex mcp-server`)
 ---
 
 # Codex Review
@@ -30,7 +29,7 @@ If content is outside the project, inline it in your prompt.
 
 All workflows follow this loop:
 
-1. **Send request** via `mcp__plugin_codex-review_codex__codex` (first call) or `mcp__plugin_codex-review_codex__codex-reply` (follow-ups)
+1. **Send request** using the Codex MCP server's `codex` tool (first call) or `codex-reply` tool (follow-ups)
 2. **Receive feedback** from Codex
 3. **Address feedback** - make changes or push back with reasoning
 4. **Re-request review** until approved
@@ -85,7 +84,7 @@ Review for correctness and issues.
 
 ## Session Management
 
-**Start session** - include in `mcp__plugin_codex-review_codex__codex`:
+**Start session** - include in your first request to the Codex MCP server's `codex` tool:
 ```
 Handshake token: <UNIQUE_TOKEN>
 
@@ -98,7 +97,7 @@ Find your session_id:
 [Your request...]
 ```
 
-**Continue session** - use `mcp__plugin_codex-review_codex__codex-reply` with the SESSION_ID.
+**Continue session** - use the Codex MCP server's `codex-reply` tool with the SESSION_ID.
 
 **Recover lost session** - start fresh with context:
 ```
