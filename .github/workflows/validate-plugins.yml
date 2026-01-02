@@ -1,0 +1,30 @@
+name: Validate Plugins
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "lts/*"
+          package-manager-cache: false
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      # Validate marketplace manifest
+      - name: Validate marketplace
+        run: claude plugin validate .
+
+      # Validate plugin manifest
+      - name: Validate plugin
+        run: claude plugin validate plugins/codex-review
