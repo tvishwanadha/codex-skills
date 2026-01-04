@@ -4,6 +4,8 @@ A skill that integrates OpenAI Codex as an MCP server for plan review, code revi
 
 This repository is a [Claude Code plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces) containing an [agentskills.io](https://agentskills.io) compatible skill. The installation instructions below are for Claude Code, but the skill can be adapted for other compatible agents.
 
+For background on why this exists, see [Combining Claude and Codex](https://notes.teja.me/ai/dev-with-ai/combining-claude-and-codex).
+
 ## What It Does
 
 The `codex-review` skill teaches an agent to:
@@ -73,7 +75,7 @@ The skill uses semantic tool references (e.g., "Codex MCP server's `codex` tool"
 | Layer | Format | Reference |
 |-------|--------|-----------|
 | Distribution | Claude Code plugin marketplace | [plugin-marketplaces](https://code.claude.com/docs/en/plugin-marketplaces) |
-| Skill | agentskills.io specification | [specification.md](https://agentskills.io/specification.md) |
+| Skill | agentskills.io specification | [specification](https://agentskills.io/specification) |
 
 The SKILL.md frontmatter includes `license` and `compatibility` fields per the agentskills.io spec.
 
