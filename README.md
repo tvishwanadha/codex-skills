@@ -65,8 +65,8 @@ Add to `~/.claude/settings.json`:
 
 The plugin bundles an MCP server configuration that runs `codex mcp-server`. When installed, Claude Code namespaces the server as `plugin:codex-review:codex`, which determines the tool names:
 
-- `mcp__plugin_codex-review_codex__codex` - Start a session
-- `mcp__plugin_codex-review_codex__codex-reply` - Continue a session
+- `mcp__plugin_codex-review_codex__codex` - Start a thread
+- `mcp__plugin_codex-review_codex__codex-reply` - Continue a thread
 
 The skill uses semantic tool references (e.g., "Codex MCP server's `codex` tool") rather than Claude Code-specific names, making SKILL.md portable across agents that support the [agentskills.io](https://agentskills.io) format.
 
@@ -84,5 +84,6 @@ The SKILL.md frontmatter includes `license` and `compatibility` fields per the a
 See [SKILL.md](plugins/codex-review/skills/codex-review/SKILL.md) for the full skill reference including:
 - Constraints and limitations
 - When to use (and skip)
+- Thread configuration (approval-policy, sandbox)
 - Workflow templates for plan review, completion verification, and code review
-- Session management
+- Thread management
