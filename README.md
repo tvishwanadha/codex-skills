@@ -1,5 +1,10 @@
 # Codex Review Skill
 
+> [!IMPORTANT]
+> **This repository has moved.** Active development continues at [tvishwanadha/skills](https://github.com/tvishwanadha/skills), a unified marketplace for both Codex and Claude Code.
+>
+> This repo will be archived shortly.
+
 A skill that integrates OpenAI Codex as an MCP server for plan review, code review, and completion verification.
 
 This repository is a [Claude Code plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces) containing an [agentskills.io](https://agentskills.io) compatible skill. The installation instructions below are for Claude Code, but the skill can be adapted for other compatible agents.
